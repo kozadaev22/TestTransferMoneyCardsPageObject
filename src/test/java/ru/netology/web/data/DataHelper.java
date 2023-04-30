@@ -8,21 +8,8 @@ public class DataHelper {
     private DataHelper() {
     }
 
-    @Value
-    public static class VerificationCode {
-        private String code;
-    }
-
-    @Value
-    public static class CardInfo {
-        private String CardNumber;
-        private String testId;
-    }
-
-    @Value
-    public static class AuthInfo {
-        private String login;
-        private String password;
+    public static VerificationCode getVerificationCode() {
+        return new VerificationCode("12345");
     }
 
     public static AuthInfo getAuthInfo() {
@@ -31,10 +18,6 @@ public class DataHelper {
 
     public static AuthInfo getOtherAuthInfo(AuthInfo original) {
         return new AuthInfo("petya", "123qwerty");
-    }
-
-    public static VerificationCode getVerificationCode() {
-        return new VerificationCode("12345");
     }
 
     public static CardInfo getFirstCardInfo() {
@@ -51,5 +34,22 @@ public class DataHelper {
 
     public static int generateInvalidAmount(int balance) {
         return Math.abs(balance) + new Random().nextInt(1000);
+    }
+
+    @Value
+    public static class VerificationCode {
+        String code;
+    }
+
+    @Value
+    public static class CardInfo {
+        String cardNumber;
+        String testId;
+    }
+
+    @Value
+    public static class AuthInfo {
+        String login;
+        String password;
     }
 }
